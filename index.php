@@ -29,7 +29,7 @@ if (array_key_exists('Digits', $_POST)) {
     $gather->say('Press 1 if you want to report the abuse. Press 2 to speak to our customer care executive.');
 
     // If the user doesn't enter input, loop
-    $response->redirect('/voice');
+   // $response->redirect('/voice');
 }
 
 // Render the response as XML in reply to the webhook request
