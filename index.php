@@ -5,6 +5,7 @@ use Twilio\Twiml;
 
 $response = new Twiml();
 
+$response->say('Thanks for calling Rearward Reality. Lets Fight Back.', ['voice' => 'woman', 'language' => 'en']);
 if (array_key_exists('Digits', $_POST)) {
     switch ($_POST['Digits']) {
     case 1:
