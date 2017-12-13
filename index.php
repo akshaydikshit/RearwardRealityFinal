@@ -1,12 +1,32 @@
 <?php
-require_once './vendor/autoload.php';
+require_once '/path/to/vendor/autoload.php';
+
 use Twilio\Twiml;
 
 $response = new Twiml();
-$gather = $response->gather(['input' => 'speech dtmf', 'timeout' => 3,'numDigits' => 1]);
-$gather->say('Please press 1 or say sales for sales.');
-echo "<Response><Say>You entered " . $_REQUEST['Digits'] . "</Say></Response>";
 
+if (array_key_exists('Digits', $_POST)) {
+    switch ($_POST['Digits']) {
+    case 1:
+        $response->say('You selected sales. Good for you!');
+        break;
+    case 2:
+        $response->say('You need support. We will help!');
+        break;
+    default:
+        $response->say('Sorry, I don\'t understand that choice.');
+    }
+} else {
+    // If no input was sent, use the <Gather> verb to collect user input
+    $gather = $response->gather(array('numDigits' => 1));
+    // use the <Say> verb to request input from the user
+    $gather->say('For sales, press 1. For support, press 2.');
+
+    // If the user doesn't enter input, loop
+    $response->redirect('/voice');
+}
+
+// Render the response as XML in reply to the webhook request
+header('Content-Type: text/xml');
 echo $response;
-
 ?>
