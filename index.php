@@ -14,9 +14,9 @@ if (array_key_exists('Digits', $_POST)) {
             $response->say('You need support. We will help!');
             $response->play('ac.mp3', ['loop' => 1]);
             $response->say('All our representatives are currently busy with other calls. Please leave a message with your phone number.');
-            $response->record(['maxLength' => 10, 'finishOnKey' => '22']);
-            $response->say('I did not receive a recording');
-            break;
+            $response->record();
+            $response->hangup();
+             break;
         default:
             $response->say('Sorry, I don\'t understand that choice.');
     }
