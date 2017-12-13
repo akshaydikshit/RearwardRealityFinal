@@ -12,8 +12,11 @@ if (array_key_exists('Digits', $_POST)) {
             break;
         case 2:
             $response->say('You need support. We will help!');
-            $response->play('ac.mp3', ['loop' => 1]);
+            $response->play('ac.mp3', ['loop' => 3]);
             $response->say('All our representatives are currently busy with other calls. Please leave a message with your phone number.');
+            $response->record(['timeout' => 10, 'transcribe' => 'true']);
+            $response->say('All our representatives are currently busy with other calls. Please leave a message with your phone number.');
+            
             break;
         default:
             $response->say('Sorry, I don\'t understand that choice.');
