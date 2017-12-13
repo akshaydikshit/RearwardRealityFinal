@@ -23,7 +23,7 @@ if (array_key_exists('Digits', $_POST)) {
     $gather->say('For sales, press 1. For support, press 2.');
 
     // If the user doesn't enter input, loop
-    $response->redirect('/voice');
+  
 }
 
 // Render the response as XML in reply to the webhook request
