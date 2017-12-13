@@ -8,7 +8,10 @@ $response = new Twiml();
 if (array_key_exists('Digits', $_POST)) {
     switch ($_POST['Digits']) {
         case 1:
-            $response->say('You selected 1. Good for you!');
+           $response->say('You selected 1. Good for you!');
+            $gather = $response->gather(['input' => 'speech', 'action' => 'completed.php']);
+            $gather->say('Welcome to Twilio, please tell us why you\'re calling');
+
             break;
         case 2:
           $response->say('You need support. We will help!');
