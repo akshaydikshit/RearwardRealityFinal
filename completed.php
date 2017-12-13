@@ -1,10 +1,10 @@
 <?php
-
-$response->say('Sorry, I don\'t understand that choice.');
-require_once './vendor/autoload.php';
-
-use Twilio\Twiml;
-
-$response = new Twiml();
-$response->say('Sorry, I don\'t understand that choice.');
+header('Content-Type: text/xml');
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 ?>
+
+<Response>
+    <Say>
+        Thanks for recording. Goodbye.
+    </Say>
+</Response>
