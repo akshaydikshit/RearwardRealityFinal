@@ -1,4 +1,5 @@
 <?php
+
 require_once './vendor/autoload.php';
 
 use Twilio\Twiml;
@@ -13,22 +14,14 @@ if (array_key_exists('Digits', $_POST)) {
             $response->say('You need support. We will help!');
             $response->play('ac.mp3', ['loop' => 1]);
             $response->say('All our representatives are currently busy with other calls. Please leave a message with your phone number.');
-            header('Content-Type: text/xml');
-            echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-            ?>
-            <Response>
-                <Record maxLength="10" action="completed.php" />
-            </Response>
-            <?php
-// $response->record();
-// $response->hangup();
-            break;
+            $response->record(['maxLength' => 10,'action' => 'completed.php']);
+             break;
         default:
             $response->say('Sorry, I don\'t understand that choice.');
     }
 } else {
     $response->say('Thanks for calling Rearward Reality. Lets Fight Back.', ['voice' => 'woman', 'language' => 'en']);
-// If no input was sent, use the <Gather> verb to collect user input
+    // If no input was sent, use the <Gather> verb to collect user input
     $gather = $response->gather(array('numDigits' => 1));
     // use the <Say> verb to request input from the user
     $gather->say('Press 1 if you want to report the abuse. Press 2 to speak to our customer care executive.');
