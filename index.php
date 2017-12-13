@@ -5,7 +5,7 @@ use Twilio\Twiml;
 
 $response = new Twiml();
 
-$response->say('Thanks for calling Rearward Reality. Lets Fight Back.', ['voice' => 'woman', 'language' => 'en']);
+
 if (array_key_exists('Digits', $_POST)) {
     switch ($_POST['Digits']) {
     case 1:
@@ -18,8 +18,10 @@ if (array_key_exists('Digits', $_POST)) {
         $response->say('Sorry, I don\'t understand that choice.');
     }
 } else {
+    $response->say('Thanks for calling Rearward Reality. Lets Fight Back.', ['voice' => 'woman', 'language' => 'en']);
     // If no input was sent, use the <Gather> verb to collect user input
     $gather = $response->gather(array('numDigits' => 1));
+
     // use the <Say> verb to request input from the user
     $gather->say('Press 1 if you want to report the abuse. Press 2 to speak to our customer care executive.');
 
