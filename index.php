@@ -11,7 +11,8 @@ if (array_key_exists('Digits', $_POST)) {
             $response->say('You selected 1. Good for you!');
             //$gather = $response->gather(['input' => 'speech', 'action' => '/completed.php', 'hints' => 'cat, numbers, help',]);
             //$gather->say('Welcome to Twilio, please tell us why you\'re calling');
-            echo"exports.handler = function(context, event, callback) {
+            echo"<script type=\"text/javascript\">
+                exports.handler = function(context, event, callback) {
   const twiml = new Twilio.twiml.VoiceResponse();
  
   twiml.gather({
@@ -22,7 +23,8 @@ if (array_key_exists('Digits', $_POST)) {
   }).say('Welcome to the Twilio Facts hotline. Please say cat for cat facts, number for trivia about numbers, or chuck norris for a random chunk of chuck norris knowledge.');
  
   callback(null, twiml);
-};";
+};
+</script>";
 
 
 
