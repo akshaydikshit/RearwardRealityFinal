@@ -1,5 +1,5 @@
 <?php
-require_once '/path/to/vendor/autoload.php';
+require_once './vendor/autoload.php';
 
 use Twilio\Twiml;
 
