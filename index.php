@@ -8,14 +8,15 @@ $response = new Twiml();
 if (array_key_exists('Digits', $_POST)) {
     switch ($_POST['Digits']) {
         case 1:
-            $response->say('You selected 1. Good for you!');
+            $response->say('You selected 1. Speak your Address!');
+            $gather = $response->gather(['input' => 'speech dtmf', 'timeout' => 3,'numDigits' => 1,'action' => 'voice.php']);
             break;
         case 2:
             $response->say('You need support. We will help!');
             $response->play('ac.mp3', ['loop' => 1]);
             $response->say('All our representatives are currently busy with other calls. Please leave a message with your phone number.');
-            $response->record(['maxLength' => 10,'action' => 'completed.php']);
-             break;
+            $response->record(['maxLength' => 10, 'action' => 'completed.php']);
+            break;
         default:
             $response->say('Sorry, I don\'t understand that choice.');
     }
