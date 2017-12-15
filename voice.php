@@ -7,7 +7,7 @@ use Twilio\Twiml;
 $response = new Twiml();
 $response->say('hello how are you', ['voice' => 'woman', 'language' => 'en-US']);
 $response->say('hello how are you', ['voice' => 'woman', 'language' => 'en-US']);
-
+$response->say($_POST['SpeechResult']);
 if (($_POST['SpeechResult']) != 'hello') {
     $response->say('I am back');
 }
