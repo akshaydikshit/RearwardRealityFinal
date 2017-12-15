@@ -9,7 +9,6 @@ use Twilio\Twiml;
 $response = new Twiml();
 $response->say('FETCHING CAT', ['voice' => 'woman', 'language' => 'en']);
 
-echo $response;
 
 $response->say('Fetching Cat!');
 switch ($_REQUEST['SpeechResult']) {
