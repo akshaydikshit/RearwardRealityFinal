@@ -8,7 +8,7 @@ $response = new Twiml();
 $response->say('hello how are you', ['voice' => 'woman', 'language' => 'en-US']);
 $response->say('hello how are you', ['voice' => 'woman', 'language' => 'en-US']);
 
-if (($_POST['SpeechResult']) == 'hello') {
+if (($_POST['SpeechResult']) != 'hello') {
     $response->say('I am back');
 }
 switch ($_POST['SpeechResult']) {
