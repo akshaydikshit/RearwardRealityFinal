@@ -9,7 +9,7 @@ use Twilio\Twiml;
 $response = new Twiml();
 $response->say('Chapeau!', ['voice' => 'woman', 'language' => 'fr']);
 
-
+echo $response;
 $response->say('Chapeau!', ['voice' => 'woman', 'language' => 'fr']);
 
 ?>
