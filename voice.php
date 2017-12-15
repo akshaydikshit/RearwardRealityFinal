@@ -13,17 +13,17 @@ if ((strtolower($_POST['SpeechResult'])) == 'hello') {
     $response->say('I am back');
 }
 switch ($_POST['SpeechResult']) {
-    case 'hello':
+    case "hello":
         $response->say('I am back');
         break;
-    case 'Hello':
+    case "Hello":
         $response->say('You need support. We will help!');
         break;
-    case 'HELLO':
+    case "HELLO":
         $response->say('You need support. We will help!');
         break;
     default:
-        $response->say('Sorry, I don\'t understand that choice.');
+        $response->say('Thats it i am done.');
 }
 
 
