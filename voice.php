@@ -8,17 +8,19 @@ $response = new Twiml();
 $response->say('hello how are you', ['voice' => 'woman', 'language' => 'en-US']);
 $response->say('hello how are you', ['voice' => 'woman', 'language' => 'en-US']);
 
-
+if (($_POST['SpeechResult']) == 'hello') {
+    $response->say('I am back');
+}
 switch ($_POST['SpeechResult']) {
     case 'hello':
         $response->say('I am back');
         break;
     case 'Hello':
         $response->say('You need support. We will help!');
-          break;
-       case 'HELLO':
+        break;
+    case 'HELLO':
         $response->say('You need support. We will help!');
-          break;
+        break;
     default:
         $response->say('Sorry, I don\'t understand that choice.');
 }
