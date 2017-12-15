@@ -7,10 +7,10 @@ require_once './vendor/autoload.php';
 use Twilio\Twiml;
 
 $response = new Twiml();
-$response->say('Fetching', ['voice' => 'woman', 'language' => 'en-US']);
+$response->say('Lets Fight Back.', ['voice' => 'woman', 'language' => 'en']);
 
-//echo $response;
-$response->say('Cat!', ['voice' => 'woman', 'language' => 'en-US']);
+
+$response->say('Cat', ['voice' => 'man', 'language' => 'en-US']);
 
 switch ($_REQUEST['SpeechResult']) {
     case 'cat':
