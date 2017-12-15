@@ -16,6 +16,9 @@ switch ($_POST['SpeechResult']) {
     case 'Hello':
         $response->say('You need support. We will help!');
           break;
+       case 'HELLO':
+        $response->say('You need support. We will help!');
+          break;
     default:
         $response->say('Sorry, I don\'t understand that choice.');
 }
