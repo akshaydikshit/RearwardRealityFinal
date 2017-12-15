@@ -8,10 +8,10 @@ use Twilio\Twiml;
 
 $response = new Twiml();
 $response->say('Lets Fight Back.', ['voice' => 'woman', 'language' => 'en']);
-
+echo $response;
 
 $response->say('Cat', ['voice' => 'man', 'language' => 'en-US']);
-
+echo $response;
 switch ($_REQUEST['SpeechResult']) {
     case 'cat':
         $response->say('Fetching Cat!');
