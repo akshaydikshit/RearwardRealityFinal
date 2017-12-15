@@ -1,8 +1,5 @@
 <?php
 
-header('Content-Type: text/xml');
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-
 require_once './vendor/autoload.php';
 
 use Twilio\Twiml;
@@ -13,7 +10,7 @@ switch ($_REQUEST['SpeechResult']) {
     case 'cat':
         $response->say('Fetching Cat!');
         break;
-     case 'CAT':
+    case 'CAT':
         $response->say('Fetching ALL Cat!');
         break;
     case 'Cat':
