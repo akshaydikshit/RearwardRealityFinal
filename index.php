@@ -10,6 +10,7 @@ if (array_key_exists('Digits', $_POST)) {
         case 1:
             $response->say('You selected 1. Speak your Address!');
             $response->gather(['input' => 'speech','hints' => 'cat', 'timeout' => 6,'action' => 'voice.php']);
+            $response->say('I am back');
             break;
         case 2:
             $response->say('You need support. We will help!');
