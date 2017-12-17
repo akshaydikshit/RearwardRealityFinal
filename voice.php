@@ -9,13 +9,10 @@ $response = new Twiml();
 $response->say('hello how are you', ['voice' => 'woman', 'language' => 'en-US']);
 $response->say('hello how are you', ['voice' => 'woman', 'language' => 'en-US']);
 $response->say($_POST['SpeechResult']);
-if (preg_match('/hello/i', $_POST['SpeechResult']))
-    $response->say('I am here. ');
+if (preg_match('/jersey city/i', $_POST['SpeechResult']))
+    $response->say('I am in jersey city ');
 
 
-if ((strtolower($_POST['SpeechResult'])) == 'hello') {
-    $response->say('I am back');
-}
 switch ($_POST['SpeechResult']) {
     case "hello":
         $response->say('I am back');
