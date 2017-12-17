@@ -16,7 +16,7 @@ if (preg_match('/jersey/i', $_POST['SpeechResult'])) {
     $from = $_REQUEST['From'];
     $response->sms('Address is: 24 Willow Ave, Jersey City,NJ 07306 .', ['from' => '+16283003802',
         'to' => $from]);
-} elseif (preg_match('/newyork/i', $_POST['SpeechResult'])) {
+} elseif (preg_match('/new/york/i', $_POST['SpeechResult'])) {
     $response->say('one pace plaza', ['voice' => 'woman', 'language' => 'en-US']);
     $response->say('newyork city', ['voice' => 'woman', 'language' => 'en-US']);
     $response->say('The shelter home located in newyork city is at ', ['voice' => 'woman', 'language' => 'en-US']);
