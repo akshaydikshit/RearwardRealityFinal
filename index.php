@@ -23,7 +23,7 @@ if (array_key_exists('Digits', $_POST)) {
             $response->say('Sorry, I don\'t understand that choice.');
     }
 } else {
-    $response->say('Thanks for calling Rearward Reality. Lets Fight Back.', ['voice' => 'woman', 'language' => 'en']);
+    $response->say('Thanks for calling Rearward Reality. Lets Fight Back.', ['voice' => 'woman', 'language' => 'en','action' => 'completed.php']);
     // If no input was sent, use the <Gather> verb to collect user input
     $gather = $response->gather(array('numDigits' => 1));
     // use the <Say> verb to request input from the user
