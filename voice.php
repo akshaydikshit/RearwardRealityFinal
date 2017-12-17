@@ -9,6 +9,8 @@ $response = new Twiml();
 $response->say('hello how are you', ['voice' => 'woman', 'language' => 'en-US']);
 $response->say('hello how are you', ['voice' => 'woman', 'language' => 'en-US']);
 $response->say($_POST['SpeechResult']);
+echo substr($_POST['SpeechResult'], 0, 5);
+echo "<script>console.log( 'SpeechResult: " . $_POST['SpeechResult'] . "' );</script>";
 if ((strtolower($_POST['SpeechResult'])) == 'hello') {
     $response->say('I am back');
 }
