@@ -9,7 +9,7 @@ if (array_key_exists('Digits', $_POST)) {
     switch ($_POST['Digits']) {
         case 1:
             $response->say('You selected 1.', ['voice' => 'woman', 'language' => 'en']);
-            $response->say('Speak your City!', ['voice' => 'woman', 'language' => 'en']);
+            $response->say('In which city you are looking for shelter', ['voice' => 'woman', 'language' => 'en']);
 
             $response->gather(['input' => 'speech', 'hints' => 'jersey, newyork', 'speechTimeout' => 'auto', 'action' => 'voice.php']);
             break;
@@ -24,7 +24,9 @@ if (array_key_exists('Digits', $_POST)) {
     }
 } else {
     $response->say('Thanks for calling Rearward Reality. Lets Fight Back.', ['voice' => 'woman', 'language' => 'en']);
-    // If no input was sent, use the <Gather> verb to collect user input
+    $response->say('In case of emergency Dial one zero zero.', ['voice' => 'woman', 'language' => 'en']);
+
+// If no input was sent, use the <Gather> verb to collect user input
     $gather = $response->gather(array('numDigits' => 1));
     // use the <Say> verb to request input from the user
     $gather->say('Press 1 to know about the nearest shelter. Press 2 to speak to our representatives.', ['voice' => 'woman', 'language' => 'en']);
