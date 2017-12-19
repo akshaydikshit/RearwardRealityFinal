@@ -8,7 +8,7 @@ $response = new Twiml();
 
 $response->say($_POST['SpeechResult'], ['voice' => 'woman', 'language' => 'en-US']);
 if (preg_match('/mumbai/i', $_POST['SpeechResult'])) {
-    $response->say('The shelter home located in jersey city is at ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->say('The shelter home located in mumbai is at ', ['voice' => 'woman', 'language' => 'en-US']);
     $response->say('One Marine drive ', ['voice' => 'woman', 'language' => 'en-US']);
     $response->say('Mumbai ', ['voice' => 'woman', 'language' => 'en-US']);
     $response->say('Maharashtra 41109 ', ['voice' => 'woman', 'language' => 'en-US']);
@@ -26,7 +26,7 @@ if (preg_match('/mumbai/i', $_POST['SpeechResult'])) {
         'to' => $from]);
     $response->say('Thank you for calling us. You will also receive a message after this call with the same information.Stay Safe!.', ['voice' => 'woman', 'language' => 'en-US']);
 } elseif (preg_match('/indore/i', $_POST['SpeechResult'])) {
-    $response->say('The shelter home located in newyork city is at ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->say('The shelter home located in indore is at ', ['voice' => 'woman', 'language' => 'en-US']);
     $response->say('Fourteen Kings Villa ', ['voice' => 'woman', 'language' => 'en-US']);
     $response->say('Indore ', ['voice' => 'woman', 'language' => 'en-US']);
     $from = $_REQUEST['From'];
@@ -35,7 +35,7 @@ if (preg_match('/mumbai/i', $_POST['SpeechResult'])) {
     $response->say('Thank you for calling us. You will also receive a message after this call with the same information.Stay Safe!.', ['voice' => 'woman', 'language' => 'en-US']);
 }
 elseif (preg_match('/delhi/i', $_POST['SpeechResult'])) {
-    $response->say('The shelter home located in newyork city is at ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->say('The shelter home located in Delhi is at ', ['voice' => 'woman', 'language' => 'en-US']);
     $response->say('M block Queen Road ', ['voice' => 'woman', 'language' => 'en-US']);
     $response->say('Delhi ', ['voice' => 'woman', 'language' => 'en-US']);
     $from = $_REQUEST['From'];
@@ -45,7 +45,7 @@ elseif (preg_match('/delhi/i', $_POST['SpeechResult'])) {
 } 
 else {
     $response->say('Sorry I did not understand. Please Repeat. ', ['voice' => 'woman', 'language' => 'en-US']);
-    $response->gather(['input' => 'speech', 'hints' => 'jersey, newyork', 'speechTimeout' => 'auto', 'action' => 'voice.php']);
+    $response->gather(['input' => 'speech', 'hints' => 'mumbai, pune,indore,hyderabad,delhi,gujrat,agra', 'speechTimeout' => 'auto', 'action' => 'voice.php']);
 }
 
 // Render the response as XML in reply to the webhook request
