@@ -11,7 +11,7 @@ if (array_key_exists('Digits', $_POST)) {
             $response->say('You selected 1.', ['voice' => 'woman', 'language' => 'en']);
             $response->say('In which city you are looking for shelter', ['voice' => 'woman', 'language' => 'en']);
 
-            $response->gather(['input' => 'speech', 'hints' => 'jersey, newyork', 'speechTimeout' => 'auto', 'action' => 'voice.php']);
+            $response->gather(['input' => 'speech', 'hints' => 'mumbai, pune,indore,hyderabad,delhi,gujrat,agra', 'speechTimeout' => 'auto', 'action' => 'voice.php']);
             break;
         case 2:
             $response->say('You need support. We will help!');
