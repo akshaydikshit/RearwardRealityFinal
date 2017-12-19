@@ -26,7 +26,8 @@ if (preg_match('/jersey/i', $_POST['SpeechResult'])) {
         'to' => $from]);
     $response->say('Thank you for calling us. You will also receive a message after this call with the same information.Stay Safe!.', ['voice' => 'woman', 'language' => 'en-US']);
 } else {
-    $response->say('Did you said ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->say('Sorry I did not understand. Please Repeat. ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->gather(['input' => 'speech', 'hints' => 'jersey, newyork', 'speechTimeout' => 'auto', 'action' => 'voice.php']);
 }
 
 // Render the response as XML in reply to the webhook request
