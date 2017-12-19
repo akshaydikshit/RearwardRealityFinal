@@ -14,10 +14,11 @@ if (array_key_exists('Digits', $_POST)) {
             $response->gather(['input' => 'speech', 'hints' => 'mumbai, pune,indore,hyderabad,delhi,gujrat,agra', 'speechTimeout' => 'auto', 'action' => 'voice.php']);
             break;
         case 2:
-            $response->say('You need support. We will help!');
+            $response->say('You need support. We will help!', ['voice' => 'woman', 'language' => 'en']);
             $response->play('ac.mp3', ['loop' => 1]);
-            $response->say('All our representatives are currently busy with other calls. Please leave a message with your phone number.');
-            $response->record(['maxLength' => 10, 'action' => 'completed.php']);
+            $response->say('All our representatives are currently busy with other calls. Please leave a message with your phone number.', ['voice' => 'woman', 'language' => 'en']);
+            $response->say('When done with recording press pound key', ['voice' => 'woman', 'language' => 'en']);
+            $response->record(['maxLength' => 50, 'action' => 'completed.php','finishOnKey' => '#']);
             break;
         default:
             $response->say('Sorry, I don\'t understand that choice.');
