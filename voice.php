@@ -5,35 +5,51 @@ require_once './vendor/autoload.php';
 use Twilio\Twiml;
 
 $response = new Twiml();
-if (array_key_exists('Digits', $_POST)) {
-    switch ($_POST['Digits']) {
-        case 1:
-            $response->say('You selected 1.', ['voice' => 'woman', 'language' => 'en']);
-            $response->say('In which city you are looking for shelter', ['voice' => 'woman', 'language' => 'en']);
 
-            $response->gather(['input' => 'speech', 'hints' => 'mumbai, pune,indore,hyderabad,delhi,gujrat,agra', 'speechTimeout' => 'auto', 'action' => 'voice.php']);
-            break;
-        case 2:
-            $response->say('You need support. We will help!', ['voice' => 'woman', 'language' => 'en']);
-            $response->play('ac.mp3', ['loop' => 1]);
-            $response->say('All our representatives are currently busy with other calls. Please leave a message with your phone number.', ['voice' => 'woman', 'language' => 'en']);
-            $response->say('When done with recording press pound key', ['voice' => 'woman', 'language' => 'en']);
-            $response->record(['maxLength' => 50, 'action' => 'completed.php','finishOnKey' => '#']);
-            break;
-        default:
-            $response->say('Sorry, I don\'t understand that choice.');
-    }
-} else {
-    $response->say('Thanks for calling Rearward Reality. Lets Fight Back.', ['voice' => 'woman', 'language' => 'en']);
-    $response->say('In case of emergency Dial one zero zero.', ['voice' => 'woman', 'language' => 'en']);
+$response->say($_POST['SpeechResult'], ['voice' => 'woman', 'language' => 'en-US']);
+if (preg_match('/mumbai/i', $_POST['SpeechResult'])) {
+    $response->say('The shelter home located in mumbai is at ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->say('One Marine drive ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->say('Mumbai ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->say('Maharashtra 41109 ', ['voice' => 'woman', 'language' => 'en-US']);
 
-// If no input was sent, use the <Gather> verb to collect user input
-    $gather = $response->gather(array('numDigits' => 1));
-    // use the <Say> verb to request input from the user
-    $gather->say('Press 1 to know about the nearest shelter. Press 2 to speak to our representatives.', ['voice' => 'woman', 'language' => 'en']);
-    // If the user doesn't enter input, loop
+    $from = $_REQUEST['From'];
+    $response->sms('Address is: 1 Marine Drive, Mumbai,Maharashtra 41109 .', ['from' => '+16283003802',
+        'to' => $from]);
+    $response->say('Thank you for calling us. You will also receive a message after this call with the same information.Stay Safe!.', ['voice' => 'woman', 'language' => 'en-US']);
+} elseif (preg_match('/pune/i', $_POST['SpeechResult'])) {
+    $response->say('The shelter home located in pune is at ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->say('Aroma tower TWO Zero Three ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->say('M G Road Pune 41110 ', ['voice' => 'woman', 'language' => 'en-US']);
+    $from = $_REQUEST['From'];
+    $response->sms('Address is: 203 Aroma tower  M.G Road Pune.', ['from' => '+16283003802',
+        'to' => $from]);
+    $response->say('Thank you for calling us. You will also receive a message after this call with the same information.Stay Safe!.', ['voice' => 'woman', 'language' => 'en-US']);
+} elseif (preg_match('/indore/i', $_POST['SpeechResult'])) {
+    $response->say('The shelter home located in indore is at ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->say('Fourteen Kings Villa ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->say('Indore ', ['voice' => 'woman', 'language' => 'en-US']);
+    $from = $_REQUEST['From'];
+    $response->sms('Address is: 14 Kings Villa, Indore. 41111', ['from' => '+16283003802',
+        'to' => $from]);
+    $response->say('Thank you for calling us. You will also receive a message after this call with the same information.Stay Safe!.', ['voice' => 'woman', 'language' => 'en-US']);
 }
+elseif (preg_match('/delhi/i', $_POST['SpeechResult'])) {
+    $response->say('The shelter home located in Delhi is at ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->say('M block Queen Road ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->say('Delhi ', ['voice' => 'woman', 'language' => 'en-US']);
+    $from = $_REQUEST['From'];
+    $response->sms('Address is: M-block Queen Road Delhi.41112', ['from' => '+16283003802',
+        'to' => $from]);
+    $response->say('Thank you for calling us. You will also receive a message after this call with the same information.Stay Safe!.', ['voice' => 'woman', 'language' => 'en-US']);
+} 
+else {
+    $response->say('Sorry I did not understand. Please Repeat. ', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->gather(['input' => 'speech', 'hints' => 'mumbai, pune,indore,hyderabad,delhi,gujrat,agra', 'speechTimeout' => 'auto', 'action' => 'voice.php']);
+}
+
 // Render the response as XML in reply to the webhook request
 header('Content-Type: text/xml');
 echo $response;
 ?>
+
