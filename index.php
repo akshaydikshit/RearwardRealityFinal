@@ -18,7 +18,7 @@ if (array_key_exists('Digits', $_POST)) {
             $response->play('ac.mp3', ['loop' => 1]);
             $response->say('All our representatives are currently busy with other calls. Please leave a message with your phone number.', ['voice' => 'woman', 'language' => 'en']);
             $response->say('When done with recording press pound key', ['voice' => 'woman', 'language' => 'en']);
-            $response->record(['maxLength' => 30, 'action' => 'completed.php','finishOnKey' => '#']);
+            $response->record(['action' => 'completed.php','finishOnKey' => '#']);
             break;
         default:
             $response->say('Sorry, I don\'t understand that choice.');
