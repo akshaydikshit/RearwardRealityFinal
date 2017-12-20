@@ -13,17 +13,12 @@ if (preg_match('/mumbai/i', $_POST['SpeechResult'])) {
     $response->say('Mumbai ', ['voice' => 'woman', 'language' => 'en-US']);
     $response->say('Maharashtra 41109 ', ['voice' => 'woman', 'language' => 'en-US']);
 
-    $response->say('Do you want a SMS about the address. ', ['voice' => 'woman', 'language' => 'en-US']);
-    $response->gather(['input' => 'speech', 'hints' => 'yes,no', 'speechTimeout' => 'auto']);
-    if (preg_match('/yes/i', $_POST['SpeechResult'])) {
-        $from = $_REQUEST['From'];
-        $response->sms('Address is: 1 Marine Drive, Mumbai,Maharashtra 41109 .', ['from' => '+16283003802',
-            'to' => $from]);
-        $response->say('Thank you for calling us. You will also receive a message after this call with the same information.Stay Safe!.', ['voice' => 'woman', 'language' => 'en-US']);
-    } else {
-        $response->say('If nothing else Hangup.', ['voice' => 'woman', 'language' => 'en-US']);
-        $response->redirect('control.php', ['method' => 'POST']);
-    }
+    $from = $_REQUEST['From'];
+    $response->sms('Address is: 1 Marine Drive, Mumbai,Maharashtra 41109 .', ['from' => '+16283003802',
+        'to' => $from]);
+    $response->say('Thank you for calling us. You will also receive a message after this call with the same information.Stay Safe!.', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->say('If nothing else Hangup.', ['voice' => 'woman', 'language' => 'en-US']);
+    $response->redirect('control.php', ['method' => 'POST']);
 } elseif (preg_match('/pune/i', $_POST['SpeechResult'])) {
     $response->say('The shelter home located in pune is at ', ['voice' => 'woman', 'language' => 'en-US']);
     $response->say('Aroma tower TWO Zero Three ', ['voice' => 'woman', 'language' => 'en-US']);
