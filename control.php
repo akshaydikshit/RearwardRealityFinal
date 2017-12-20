@@ -33,6 +33,7 @@ if (array_key_exists('Digits', $_POST)) {
     // use the <Say> verb to request input from the user
     $gather->say('Press 1 to know about the nearest shelter. Press 2 to speak to our representatives.', ['voice' => 'woman', 'language' => 'en']);
     // If the user doesn't enter input, loop
+    $response->redirect('control.php');
 }
 // Render the response as XML in reply to the webhook request
 header('Content-Type: text/xml');
